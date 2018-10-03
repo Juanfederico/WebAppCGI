@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login admin - Club Los Amigos</title>
+
+	<script>
+	window.onload = function() {
+	var loginfallido = window.location.search.split("=")[1]; //Si esta en false
+	if(loginfallido) alert("Login incorrecto");
+	}
+	</script>
+</head>
+<body>
+	<form action = "/cgi-bin/inicioAdmin.py" method = "post">
+      <strong>Iniciar sesion</strong><br><br><br>
+      <strong>Nombre de usuario</strong><br>
+      <input type="text" name="user"><br>
+      <strong>Password</strong><br>
+      <input type="password" name="pass"><br>
+      <input type = "submit" value = "Enviar" />
+	</form>
+</body>
+</html>

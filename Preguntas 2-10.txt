@@ -1,0 +1,5 @@
+1- Extensión del archivo (.py o .cgi)? De las dos formas funciona igual
+2- Todo el flujo de información es todo a través de los .py/.cgi?
+3- Todo el contenido html se envía mediante el std output por prints?
+3- Todo se pasa a traves de forms?
+4- La sesión se mantiene mediante type hidden?
