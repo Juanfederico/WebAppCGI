@@ -55,12 +55,12 @@ function detalleFilial(){
 	.done(function(horarios) {
 		var options = "";
 		$.each(horarios,function(key,value){
-			if(String(horario_apertura)==String(value)) options += '<option value='+value+' selected>'+value+'</option>';
+			if(String(horario_apertura)===String(value)) options += '<option value='+value+' selected>'+value+'</option>';
 			else options += '<option value='+value+'>'+value+'</option>';
 		});
 		$('#mhorario_apertura').html(options);
 		$.each(horarios,function(key,value){
-			if(String(horario_cierre)==String(value)) options += '<option value='+value+' selected>'+value+'</option>';
+			if(String(horario_cierre)===String(value)) options += '<option value='+value+' selected>'+value+'</option>';
 			else options += '<option value='+value+'>'+value+'</option>';
 		});
 		$('#mhorario_cierre').html(options);
