@@ -6,20 +6,22 @@ import os, sys, json
 # Create instance of FieldStorage 
 form = cgi.FieldStorage()   #Levanto datos del formulario
 
-if form.getvalue('subject'):
-   subject = form.getvalue('subject')
-else:
-   subject = "Not set"
+#Nombre de usuario para autenticacion
+arrayUser = []
 
-arrayPrueba = []
-
+#Estableciendo la conexion por ODBC
 conn = pyodbc.connect(DSN="bdsistemaclub")
 cursor = conn.cursor()
+#Primera query (autenticacion del usuario)
 sql = "SELECT * from admin where user='"+form.getvalue("user")+"' AND pass='"+form.getvalue("pass")+"'"
 cursor.execute(sql)
 rows = cursor.fetchall()
 for row in rows:
-	arrayPrueba.append(row.user)
+	arrayUser.append(row.user)
+#Segunda query (informacion de todas las filiales)
+sql = "SELECT * from filial"
+cursor.execute(sql)
+rows = cursor.fetchall() #Se utiliza a lo largo del programa para cargar los select
 
 if not rows: #Login incorrecto
 	print "Content-type:text/html\r\n\r\n"
@@ -44,7 +46,7 @@ else: #Login correcto
 	print "</head>"
 	print "<body>"
 
-	print "<strong>Logueado correctamente como: </strong>" + arrayPrueba[0]
+	print "<strong>Logueado correctamente como: </strong>" + arrayUser[0]
 	print "<br><br><br>"
 
 	print "<strong> Seleccione la accion a realizar: </strong><br>"
@@ -78,6 +80,12 @@ else: #Login correcto
 	print "</div>"
 
 	print "<div id='modificar'>"
+	print "<strong>Seleccione la filial que desea modifiar</strong><br>"
+	print "<select id='filial'>"
+	print "<option selected disabled>Seleccionar</option>"
+	for row in rows:
+		print "<option value='"+str(row.idfilial)+"'>"+row.localidad+"</option>"
+	print "</select><br>"
 	print "</div>"
 
 	#print "<div id='cancelar'>"
