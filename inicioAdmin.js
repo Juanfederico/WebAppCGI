@@ -28,16 +28,43 @@ function menuAgregar(){
 	$('#dia_mantenimiento').html(dias);
 
 	//Finalmente se visualiza el contenido en pantalla
+	document.getElementById("divCancelarTurno").style.display = "none";
 	document.getElementById("divModificar").style.display = "none";
-	document.getElementById("divAgregar").style.display = "inline";
+	document.getElementById("divAgregar").style.display = "inline";	
 }
 
 function menuModificar(){
 
 	//Finalmente se visualiza el contenido en pantalla
+	document.getElementById("divCancelarTurno").style.display = "none";
 	document.getElementById("divAgregar").style.display = "none";
 	document.getElementById("divModificar").style.display = "inline";
 }
+
+function menuCancelar(){
+
+	//Finalmente se visualiza el contenido en pantalla
+	document.getElementById("divAgregar").style.display = "none";
+	document.getElementById("divModificar").style.display = "none";
+	document.getElementById("divCancelarTurno").style.display = "";
+}
+
+
+function cancelarTurno(dato) {
+    alert("se va a cancelar el turno")
+	alert(dato)
+
+} 
+
+
+function myfunction() {
+	var turno = this.getAttribute('data-idturno');
+
+	alert("Turno: " + turno );
+}
+
+
+
 
 
 function detalleFilial(){
@@ -48,6 +75,7 @@ function detalleFilial(){
 	var horario_cierre = arrayData[3].substr(0, 5);
 	var dia_mantenimiento = arrayData[4];
 
+	$("#midfilial").val(idfilial);
 	$("#mlocalidad").val(localidad);
 
 	var jqxhr = $.getJSON( '/webappcgi/horarios.json', function(horarios) {
@@ -82,6 +110,7 @@ function detalleFilial(){
 	//$("#mhorario_apertura").val(""+String(horario_apertura)).change();
 	document.getElementById("mhorario_apertura").selectedIndex = "2";
 	//$("#mhorario_apertura[value='"+horario_apertura+"']").attr('selected',true);
+
 
 
 }
