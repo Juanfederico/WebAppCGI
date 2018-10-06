@@ -64,7 +64,7 @@ else: #Login correcto
 	print "<div class='col-lg-3'>"
 	print "<button class='btn btn-info btn-block waves-effect waves-light' onclick='menuAgregar()'>Agregar filial</button>"
 	print "<button class='btn btn-info btn-block waves-effect waves-light' onclick='menuModificar()'>Modificar dia u horarios de filial</button>"
-	print "<button class='btn btn-info btn-block waves-effect waves-light' onclick='menuCancelar()'>Cancelar turno</button>"
+	print "<button class='btn btn-info btn-block waves-effect waves-light' onclick='menuCancel()'>Cancelar turno</button>"
 	print "</div>" # class='col-lg-3'
 	print "</div>" # class='row'
 	print "</div>" # id=divOpciones

@@ -30,6 +30,7 @@ function menuAgregar(){
 	//Finalmente se visualiza el contenido en pantalla
 	document.getElementById("divCancelarTurno").style.display = "none";
 	document.getElementById("divModificar").style.display = "none";
+	document.getElementById("divCamposModificacion").style.display = "none";
 	document.getElementById("divAgregar").style.display = "inline";	
 }
 
@@ -39,22 +40,23 @@ function menuModificar(){
 	document.getElementById("divCancelarTurno").style.display = "none";
 	document.getElementById("divAgregar").style.display = "none";
 	document.getElementById("divModificar").style.display = "inline";
+
 }
 
-function menuCancelar(){
+function menuCancel(){
 
 	//Finalmente se visualiza el contenido en pantalla
 	document.getElementById("divAgregar").style.display = "none";
 	document.getElementById("divModificar").style.display = "none";
-	document.getElementById("divCancelarTurno").style.display = "";
+	document.getElementById("divCamposModificacion").style.display = "none";
+	document.getElementById("divCancelarTurno").style.display = "inline";
 }
 
-
-function cancelarTurno(dato) {
+/*function cancelarTurno(dato) {
     alert("se va a cancelar el turno")
 	alert(dato)
 
-} 
+}*/
 
 
 function myfunction() {
@@ -107,10 +109,8 @@ function detalleFilial(){
 	}
 	$('#mdia_mantenimiento').html(dias);
 
-	//$("#mhorario_apertura").val(""+String(horario_apertura)).change();
-	document.getElementById("mhorario_apertura").selectedIndex = "2";
-	//$("#mhorario_apertura[value='"+horario_apertura+"']").attr('selected',true);
-
+	//Muestro el detalle de la filial que se desea modificar
+	document.getElementById("divCamposModificacion").style.display = "inline";
 
 
 }
