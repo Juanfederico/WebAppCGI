@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login admin - Club Los Amigos</title>
 
 	<script>
@@ -11,13 +17,25 @@
 	</script>
 </head>
 <body>
-	<form action = "/cgi-bin/inicioAdmin.py" method = "post">
-      <strong>Iniciar sesion</strong><br><br><br>
-      <strong>Nombre de usuario</strong><br>
-      <input type="text" name="user" value="juanadmin"><br>
-      <strong>Password</strong><br>
-      <input type="password" name="pass" value="123456"><br>
-      <input type = "submit" value = "Enviar" />
-	</form>
+	<div class="login-register" >
+		<div class="login-box card">
+			<div class="card-body">
+				<form action = "/cgi-bin/inicioAdmin.py" method = "post">
+					<h3 class="box-title m-b-20">Iniciar Sesión</h3>
+						<div class="form-group ">
+							<div class="col-xs-12">
+								<input class="form-control" name="user" type="text" value="admin" placeholder="Usuario" required> 
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<input class="form-control" name="pass" type="password" value="admin" placeholder="Contraseña" required> 
+							</div>
+						</div>
+				  <input class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" value="ingresar" />
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
