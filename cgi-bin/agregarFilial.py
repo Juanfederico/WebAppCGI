@@ -10,7 +10,7 @@ arrayPrueba = []
 
 conn = pyodbc.connect(DSN="bdsistemaclub")
 cursor = conn.cursor()
-#sql = "SELECT * from admin where user='"+form.getvalue("user")+"' AND pass='"+form.getvalue("pass")+"'"
+
 sql = "INSERT INTO filial (localidad, horario_apertura, horario_cierre, diames_mantenimiento) VALUES ('"+form.getvalue("localidad")+"', '"+form.getvalue("horario_apertura")+"', '"+form.getvalue("horario_cierre")+"', "+form.getvalue("dia_mantenimiento")+")"
 cantidad = cursor.execute(sql)
 conn.commit()
@@ -19,20 +19,22 @@ sql = "SELECT MAX(idFilial) FROM filial" #Se va a buscar el ultimo id insertado 
 cantidad = cursor.execute(sql)
 nuevoId = cursor.fetchall()
 
-""" Esto no se porque no esta funcionando. el nuevoId lo toma bien, pero cuando armo el string no se porque el idFilial cuando lo meto en el string rompe
 
-idFilial = nuevoId[0][0]
-sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + idFilial + ", '1', 'Futbol', 'Sintetico')"
-cantidad = cursor.execute(sql)
-conn.commit()
-sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + idFilial + ", '2', 'Tenis', 'Cemento')"
-cantidad = cursor.execute(sql)
-conn.commit()
-sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + idFilial + ", '3', 'Basquet', 'Madera')"
+idFilial = nuevoId[0][0] # idFilial es igual a ultimo id insertado
+
+# Se agregan canchas de prueba. Esto no es a modo de prueba, para poder alquilar canchas sobre sobre la sede
+sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + str(idFilial) + ", '1', 'Futbol', 'Sintetico')"
 cantidad = cursor.execute(sql)
 conn.commit()
 
-"""
+sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + str(idFilial) + ", '2', 'Tenis', 'Cemento')"
+cantidad = cursor.execute(sql)
+conn.commit()
+
+sql = "INSERT INTO cancha (idfilial, num_cancha, deporte, categoria) VALUES (" + str(idFilial) + ", '3', 'Basquet', 'Madera')"
+cantidad = cursor.execute(sql)
+conn.commit()
+
 
 print "Content-type:text/html\r\n\r\n"
 print "<html>"

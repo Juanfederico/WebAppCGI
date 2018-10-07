@@ -51,13 +51,11 @@ else: #Login correcto
 	print "<script type='application/javascript' src='/webappcgi/inicioAdmin.js'></script>"
 
 	print "</head>"
-	print "<body>"
-
-	print "<h3>Logueado correctamente como: "+ arrayUser[0]+"</h3>"
-	print "<br>"
+	
 	print "<div class='row'>"  
 	print "<div class='col-lg-10'>"
 	print "<div class='card-body'>"
+	print "<h3 class='card-title'>Bienvenido: "+ arrayUser[0]+"</h3>"
 	print "<h4 class='card-title'> Seleccione la accion a realizar: </h4>"
 	print "<div id=divOpciones>"
 	print "<div class='row'>"
@@ -138,7 +136,7 @@ else: #Login correcto
 
 
 
-	print "<div id='divCamposModificacion'>"
+	print "<div id='divCamposModificacion' style='display: none;'>"
 	print "<div class='row'>"  
 	print "<div class='col-lg-10'>"
 	print "<div class='card-body'>"
@@ -171,7 +169,7 @@ else: #Login correcto
 	print "</div>" # class='row'
 
 
-	print "<div id='divCancelarTurno'>"
+	print "<div id='divCancelarTurno' style='display: none;'>"
 	print "<div class='row'>"  
 	print "<div class='col-lg-6'>"
 	print "<div class='card-body'>"
@@ -196,7 +194,10 @@ else: #Login correcto
 		print "<td>"+str(row.idsocio)+"</td>"
 		print "<td>"+str(row.fechahora)+"</td>"
 		print "<td>"+str(row.estado)+"</td>"
-		print "<td><button type='button' id='btnCancelar' class='btn btn-outline-danger waves-effect waves-light' data-idTurno='"+str(row.idturno)+"''> Cancelar </button></td>"
+		print "<td>"
+		if (row.estado == "reservada"):
+			print "<input type='checkbox' value='"+str(row.idturno)+"' id='turnoACancelar' name='turnoACancelar'>"
+		print "</td>"
 		#'+str(row.idfilial)+', '+str(row.idcancha)+', '+str(row.idsocio)+', '+str(row.fechahora)+', '+str(row.estado)+'  
 		#print "<td><input class='btn btn-info btn-block waves-effect waves-light' type='submit' value='Cancelar Turno' formaction='/cgi-bin/cancelarTurno.py'></td>"
 		print "</tr>"
@@ -204,6 +205,9 @@ else: #Login correcto
 		#print str(row.idfilial)+"/"+str(row.idcancha)+"/"+str(row.idsocio)+"/"+str(row.fechahora)+"/"+row.estado
 	print "</tbody>"
 	print "</table>"
+	print "<div class='col-lg-3'>"  
+	print "<input class='btn btn-info btn-block waves-effect waves-light' type='submit' value='Cancelar Turnos' formaction='/cgi-bin/cancelarTurno.py'>"
+	print "</div>" # class='col-lg-3'
 	print "</div>" # id=divModificar
 	print "</div>" # class='card-body'
 	print "</div>" # class='col-lg-10'

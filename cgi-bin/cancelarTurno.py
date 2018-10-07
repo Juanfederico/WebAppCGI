@@ -11,11 +11,12 @@ arrayPrueba = []
 conn = pyodbc.connect(DSN="bdsistemaclub")
 cursor = conn.cursor()
 
-idTurno = form.getvalue("idturno")
+turnos = form.getvalue("turnoACancelar")
 
-sql = "UPDATE `turno` SET `estado` = 'cancelada' WHERE `turno`.`idTurno` = '" + idTurno + "';"
-cantidad = cursor.execute(sql)
-conn.commit()
+for idTurno in turnos:
+	sql = "UPDATE `turno` SET `estado` = 'cancelada' WHERE `turno`.`idTurno` = '" + idTurno + "';"
+	cantidad = cursor.execute(sql)
+	conn.commit()
 
 print "Content-type:text/html\r\n\r\n"
 print "<html>"
@@ -30,7 +31,10 @@ if cantidad is not None:
 	print "<div class='row'>"  
 	print "<div class='col-lg-10'>"
 	print "<div class='card-body'>"
-	print "<h4 class='card-title'>Turno cancelado correctamente </h4>"
+	if (len(turnos) > 1):
+		print "<h4 class='card-title'>Turnos cancelados correctamente </h4>"
+	else:
+		print "<h4 class='card-title'>Turno cancelado correctamente </h4>"
 	print "<div class='col-lg-3'>"
 	print "<a href='javascript:history.back()'>"
 	print "<input class='btn btn-info btn-block waves-effect waves-light' type='button' value='Volver'>"
@@ -40,5 +44,7 @@ if cantidad is not None:
 	print "</div>" # class='col-lg-10'
 	print "</div>" # class='row'
 else:
-	print "Error al modificar filial"
+	print "Error al cancelar el turnos"
+
+
 print "</body>"

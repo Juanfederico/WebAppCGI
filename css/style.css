@@ -41,7 +41,8 @@ Global Styles
   outline: none; }
 
 body {
-  background: #fff;
+  background-image: url("../img/background.png");
+  background-size: cover;
   font-family: "Poppins", sans-serif;
   margin: 0;
   overflow-x: hidden;
@@ -270,7 +271,6 @@ Form-control
     font-weight: 300;
     margin-bottom: 15px;
     color: #99abb4; }
-
 
 
 /*******************
