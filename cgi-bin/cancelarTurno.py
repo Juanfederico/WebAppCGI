@@ -36,9 +36,9 @@ if cantidad is not None:
 	else:
 		print "<h4 class='card-title'>Turno cancelado correctamente </h4>"
 	print "<div class='col-lg-3'>"
-	print "<a href='javascript:history.back()'>"
-	print "<input class='btn btn-info btn-block waves-effect waves-light' type='button' value='Volver'>"
-	print "</a>"
+	print "<form action='/cgi-bin/inicioAdmin.py' method='POST'>"
+	print "<input type='hidden' name='user' value='" +form.getvalue("user")+ "'>"
+	print "<input class='btn btn-info btn-block waves-effect waves-light' type='submit' value='Volver'>"
 	print "</div>" # class='col-lg-3'
 	print "</div>" # class='card-body'
 	print "</div>" # class='col-lg-10'

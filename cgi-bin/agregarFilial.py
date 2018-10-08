@@ -54,9 +54,9 @@ if cantidad is not None:
 	print "<h5 class='card-title'>Horario de cierre: " + form.getvalue("horario_cierre") + "</h5>"
 	print "<h5 class='card-title'>Dia de mantenimiento: " + form.getvalue("dia_mantenimiento") + "</h5>"
 	print "<div class='col-lg-3'>"
-	print "<a href='javascript:history.back()'>"
-	print "<input class='btn btn-info btn-block waves-effect waves-light' type='button' value='Volver'>"
-	print "</a>"
+	print "<form action='/cgi-bin/inicioAdmin.py' method='POST'>"
+	print "<input type='hidden' name='user' value='"+form.getvalue("user")+"'>"
+	print "<input class='btn btn-info btn-block waves-effect waves-light' type='submit' value='Volver'>"
 	print "</div>" # class='col-lg-3'
 	print "</div>" # class='card-body'
 	print "</div>" # class='col-lg-10'
