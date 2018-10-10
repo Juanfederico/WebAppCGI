@@ -3,6 +3,7 @@
 import pyodbc
 import cgi, cgitb
 import os, sys, json
+import datetime
 # Create instance of FieldStorage 
 form = cgi.FieldStorage()   #Levanto datos del formulario
 
@@ -207,19 +208,20 @@ if sesionActiva==True:
 		for row in turnos:
 			if(row.estado == "reservada"):
 				habilitarBotonCancelar = True
-			print "<tr>"
-			print "<td>"+str(row.idfilial)+"</td>"
-			print "<td>"+str(row.idcancha)+"</td>"
-			print "<td>"+str(row.idsocio)+"</td>"
-			print "<td>"+str(row.fechahora)+"</td>"
-			print "<td>"+str(row.estado)+"</td>"
-			print "<td>"
-			if (row.estado == "reservada"):
-				print "<input type='checkbox' value='"+str(row.idturno)+"' id='turnoACancelar' name='turnoACancelar'>"
-			print "</td>"
+			if(row.fechahora>datetime.datetime.now()):
+				print "<tr>"
+				print "<td>"+str(row.idfilial)+"</td>"
+				print "<td>"+str(row.idcancha)+"</td>"
+				print "<td>"+str(row.idsocio)+"</td>"
+				print "<td>"+str(row.fechahora)+"</td>"
+				print "<td>"+str(row.estado)+"</td>"
+				print "<td>"
+				if (row.estado == "reservada"):
+					print "<input type='checkbox' value='"+str(row.idturno)+"' id='turnoACancelar' name='turnoACancelar[]'>"
+				print "</td>"
 			#'+str(row.idfilial)+', '+str(row.idcancha)+', '+str(row.idsocio)+', '+str(row.fechahora)+', '+str(row.estado)+'  
 			#print "<td><input class='btn btn-info btn-block waves-effect waves-light' type='submit' value='Cancelar Turno' formaction='/cgi-bin/cancelarTurno.py'></td>"
-			print "</tr>"
+				print "</tr>"
 			#print str(row.idturno)+"/"+
 			#print str(row.idfilial)+"/"+str(row.idcancha)+"/"+str(row.idsocio)+"/"+str(row.fechahora)+"/"+row.estado
 		print "</tbody>"

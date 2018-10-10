@@ -11,10 +11,10 @@ arrayPrueba = []
 conn = pyodbc.connect(DSN="bdsistemaclub")
 cursor = conn.cursor()
 
-turnos = form.getvalue("turnoACancelar")
+turnos = form.getlist("turnoACancelar[]")
 
 for idTurno in turnos:
-	sql = "UPDATE `turno` SET `estado` = 'cancelada' WHERE `turno`.`idTurno` = '" + idTurno + "';"
+	sql = "UPDATE turno SET estado='cancelada' WHERE idturno=" + idTurno
 	cantidad = cursor.execute(sql)
 	conn.commit()
 
@@ -26,6 +26,7 @@ print "<link href='../WebAppCGI/css/style.css' rel='stylesheet'>"
 print "<link href='../WebAppCGI/css/bootstrap.min.css' rel='stylesheet'>"
 print "</head>"
 print "<body>"
+
 
 if cantidad is not None:
 	print "<div class='row'>"  
