@@ -254,9 +254,7 @@ else:
 	print "<html>"
 	print "<head>"
 	print "<title>Login admin - Club Los Amigos</title>"
-	print "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"
 	print "</head>"
 	print "<body>"
-	print "sadsgfjhggfdgh"
-	print vars(form.getvalue("lalala"))
+	print "<meta http-equiv='refresh' content='0; url=/webappcgi/index.html' />"
 	print "</body>"
